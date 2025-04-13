@@ -6,7 +6,8 @@
 }
 body {
   height: 100vh;
-  background: #00091f;
+  background: var(--background);
+  transition: background-color 0.3s;
 }
 html {
   font-size: 16px;
@@ -29,21 +30,25 @@ button:hover {
   gap: 2vmin;
 }
 .button-option {
-  background: #ffffff;
+  background: var(--button-bg);
   height: 22vmin;
   width: 22vmin;
   border: none;
   border-radius: 8px;
   font-size: 12vmin;
-  color: #00091f;
+  color: var(--button-text);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background-color 0.3s;
+}
+.button-option:active {
+  transform: scale(0.95);
 }
 #restart {
   font-size: 1.3em;
   padding: 1em;
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #00091f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   border: none;
   position: relative;
   margin: 1.5em auto 0 auto;
@@ -65,16 +70,57 @@ button:hover {
 #new-game {
   font-size: 0.6em;
   padding: 0.5em 1em;
-  background-color: #ffffff;
-  color: #00091f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   border-radius: 0.2em;
   border: none;
 }
 #message {
-  color: #ffffff;
+  color: var(--text);
   text-align: center;
   font-size: 1em;
 }
 .popup.hide {
   display: none;
+}
+
+/* Tema Gelap/Terang */
+:root {
+  --background: #00091f;
+  --text: #ffffff;
+  --button-bg: #ffffff;
+  --button-text: #00091f;
+}
+
+[data-theme="light"] {
+  --background: #ffffff;
+  --text: #00091f;
+  --button-bg: #00091f;
+  --button-text: #ffffff;
+}
+
+/* Tambahkan tombol toggle tema */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }

@@ -3,6 +3,8 @@ let popupRef = document.querySelector(".popup");
 let newgameBtn = document.getElementById("new-game");
 let restartBtn = document.getElementById("restart");
 let msgRef = document.getElementById("message");
+const themeToggle = document.querySelector('.theme-toggle');
+let isDark = true;
 //Winning Pattern Array
 let winningPattern = [
   [0, 1, 2],
@@ -106,3 +108,19 @@ btnRef.forEach((element) => {
 });
 //Enable Buttons and disable popup on page load
 window.onload = enableButtons;
+
+// Ganti kode toggle tema yang lama dengan yang baru
+themeToggle.addEventListener('click', () => {
+    isDark = !isDark;
+    document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    
+    // Update ikon
+    const icon = themeToggle.querySelector('i');
+    if (isDark) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+});
